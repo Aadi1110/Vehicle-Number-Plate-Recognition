@@ -36,13 +36,9 @@ def get_img(img_path):
     wpod_net_path = "wpod-net.json"
     wpod_net = load_model(wpod_net_path)
 
-
-    #test_image = 'indian_plates\Maruti-Suzuki-Swift-Old-522216d.jpg_0036_0684_0320_0110_0032.png'
-    #img_path = 'indian_plates\Skoda-Fabia-527446c.jpg_0000_0397_0215_0130_0057.png'
     LpImg,cor = get_plate(img_path,wpod_net)
     img = cv2.imread(img_path)
     bgr = img.copy()
-    #bgr = cv2.cvtColor(LpImg[0], cv2.COLOR_RGB2BGR)
     imgs = []
     if(LpImg!=-1):
         #for Lp in LpImg:
@@ -50,15 +46,6 @@ def get_img(img_path):
         img*= 255
         img = img.astype('uint8')
         img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
-            #imgs.append(img)
-        '''
-        bgr = img.copy()
-        bgr[:,:,0] = img[:,:,2]
-        bgr[:,:,2] = img[:,:,0]
-        '''
-    #print("\n\nShape:",img.shape,"\n\n")
-    #cv2.imshow('img',img)
-    #cv2.waitKey(0)
-    #cv2.destroyAllWindows()
+    
     return img
 
